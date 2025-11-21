@@ -143,6 +143,37 @@ section {
     background: #4a7eff;
 }
 
+.header__menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 3px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 10;
+}
+
+.header__menu-toggle span {
+    width: 25px;
+    height: 1.5px;
+    background: #FFFFFF;
+    border-radius: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.header__menu-toggle--active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.header__menu-toggle--active span:nth-child(2) {
+    opacity: 0;
+}
+
+.header__menu-toggle--active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 /* Hero Section */
 .hero {
     background: rgba(0, 0, 0, 0.1);
@@ -157,6 +188,27 @@ section {
     position: relative;
 }
 
+@media (max-width: 1024px) {
+    .hero {
+        border-radius: 0 0 30px 30px;
+        min-height: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        border-radius: 0 0 20px 20px;
+        min-height: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        border-radius: 0 0 15px 15px;
+        min-height: 500px;
+    }
+}
+
 .hero__background {
     position: absolute;
     top: 0;
@@ -166,6 +218,24 @@ section {
     z-index: 0;
     border-radius: 0 0 50px 50px;
     overflow: hidden;
+}
+
+@media (max-width: 1024px) {
+    .hero__background {
+        border-radius: 0 0 30px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero__background {
+        border-radius: 0 0 20px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__background {
+        border-radius: 0 0 15px 15px;
+    }
 }
 
 .hero__background img {
@@ -204,21 +274,21 @@ section {
     width: 100%;
     min-height: 312px;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
     opacity: 1;
-    gap: 80px;
+    gap: 30px;
 }
 
 .hero__title {
-    width: auto;
-    max-width: 900px;
+    width: 100%;
+    max-width: 100%;
     min-height: 312px;
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 220px;
+    font-size: clamp(60px, 12vw, 220px);
     line-height: 1;
     letter-spacing: -5%;
     color: #FFFFFF;
@@ -227,8 +297,11 @@ section {
     opacity: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-shrink: 0;
     white-space: nowrap;
+    transition: font-size 0.3s ease;
+    text-align: center;
 }
 
 .hero__info {
@@ -236,24 +309,39 @@ section {
     flex-direction: column;
     justify-content: space-between;
     gap: 15px;
-    width: 576px;
+    width: 100%;
+    max-width: calc(100% - 100px);
     min-height: 180px;
-    margin-top: 72px;
+    margin-top: 0;
     flex-shrink: 0;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+    .hero__info {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0;
+        align-items: center;
+    }
 }
 
 .hero__subtitle {
-    width: 576px;
+    width: 100%;
+    max-width: calc(100% - 100px);
     min-height: 78px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-style: normal;
-    font-size: 20px;
-    line-height: 130%;
+    font-size: clamp(18px, 2.5vw, 24px);
+    line-height: 1.5;
     letter-spacing: 0%;
-    text-align: left;
+    text-align: center;
     color: #FFFFFF;
     opacity: 1;
+    box-sizing: border-box;
+    white-space: normal;
+    padding: 0 20px;
 }
 
 .hero__button {
@@ -270,6 +358,7 @@ section {
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-decoration: none;
+    align-self: center;
 }
 
 .hero__button:hover {
@@ -331,7 +420,7 @@ section {
 .statistics__title {
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    font-size: 50px;
+    font-size: clamp(28px, 5vw, 50px);
     line-height: 1.3em;
     letter-spacing: -0.01em;
     color: var(--color-black);
@@ -483,7 +572,7 @@ section {
 .services__title {
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    font-size: 50px;
+    font-size: clamp(28px, 5vw, 50px);
     line-height: 1.3em;
     letter-spacing: -0.01em;
     color: var(--color-black);
@@ -516,7 +605,7 @@ section {
     border: 3px solid rgba(255, 255, 255, 0.01);
     border-radius: 40px;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
     position: relative;
     opacity: 1;
 }
@@ -526,7 +615,10 @@ section {
     align-items: center;
     padding: 0 52px;
     flex: 1;
+    min-width: 0;
     opacity: 1;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .services__card-number {
@@ -560,7 +652,12 @@ section {
     flex-direction: column;
     gap: 23px;
     width: 751px;
-    flex-shrink: 0;
+    max-width: 100%;
+    flex-shrink: 1;
+    flex: 1;
+    min-width: 0;
+    padding-right: 20px;
+    box-sizing: border-box;
 }
 
 .services__card-text {
@@ -571,6 +668,7 @@ section {
 
 .services__card-title {
     width: 751px;
+    max-width: 100%;
     min-height: 45px;
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
@@ -582,11 +680,16 @@ section {
     margin: 0;
     opacity: 1;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    hyphens: auto;
 }
 
 .services__card-description {
     width: 751px;
+    max-width: 100%;
     min-height: 25px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
@@ -596,6 +699,10 @@ section {
     letter-spacing: 0%;
     color: var(--color-black);
     opacity: 1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    hyphens: auto;
 }
 
 .services__card-link {
@@ -633,14 +740,19 @@ section {
 
 .services__card-image {
     width: 459px;
+    max-width: 100%;
     height: 240px;
+    min-height: 200px;
     border-radius: 35px;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     background-position: center;
     flex-shrink: 0;
-    object-fit: cover;
+    flex: 0 0 auto;
+    object-fit: contain;
     opacity: 1;
     margin-right: 30px;
+    box-sizing: border-box;
 }
 
 .services__card-image--therapy {
@@ -694,7 +806,7 @@ section {
 .team__title {
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    font-size: 50px;
+    font-size: clamp(28px, 5vw, 50px);
     line-height: 1.3em;
     letter-spacing: -0.01em;
     color: var(--color-black);
@@ -736,6 +848,7 @@ section {
 .team__card--spacer {
     background-color: transparent;
     visibility: hidden;
+    display: block;
 }
 
 .team__card-image {
@@ -897,7 +1010,7 @@ section {
 .benefits__title {
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    font-size: 50px;
+    font-size: clamp(28px, 5vw, 50px);
     line-height: 1.3em;
     letter-spacing: -0.01em;
     color: var(--color-black);
@@ -1089,7 +1202,7 @@ section {
 .reviews__title {
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    font-size: 50px;
+    font-size: clamp(28px, 5vw, 50px);
     line-height: 1.3em;
     letter-spacing: -0.01em;
     color: var(--color-black);
@@ -1111,6 +1224,7 @@ section {
     width: 100%;
     max-width: 1820px;
     justify-content: center;
+    justify-items: center;
     margin: 0 auto;
 }
 
@@ -1275,7 +1389,7 @@ section {
 .faq__title {
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    font-size: 50px;
+    font-size: clamp(28px, 5vw, 50px);
     line-height: 1.3em;
     letter-spacing: -0.01em;
     color: var(--color-black);
@@ -1297,31 +1411,7 @@ section {
     width: 100%;
     max-width: 1820px;
     margin: 0 auto;
-}
-
-.faq__item:nth-child(1) {
-    grid-row: 1;
-    grid-column: 1;
-}
-
-.faq__item:nth-child(2) {
-    grid-row: 2;
-    grid-column: 1;
-}
-
-.faq__item:nth-child(3) {
-    grid-row: 3;
-    grid-column: 1;
-}
-
-.faq__item:nth-child(4) {
-    grid-row: 1;
-    grid-column: 2;
-}
-
-.faq__item:nth-child(5) {
-    grid-row: 2;
-    grid-column: 2;
+    grid-auto-flow: row;
 }
 
 .faq__item {
@@ -1383,10 +1473,52 @@ section {
     .hero__title {
         font-size: 200px;
         max-width: 800px;
+        width: auto;
+        text-align: left;
+        justify-content: flex-start;
+        align-self: flex-start;
     }
     
     .hero__content {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        text-align: left;
         gap: 100px;
+        width: 100%;
+    }
+    
+    .hero__info {
+        width: 576px;
+        max-width: 576px;
+        margin-top: 72px;
+        align-items: flex-start;
+    }
+    
+    .hero__subtitle {
+        width: 576px;
+        max-width: 576px;
+        text-align: left;
+        font-size: 20px;
+        line-height: 130%;
+        padding: 0;
+    }
+    
+    .hero__button {
+        align-self: flex-start;
+    }
+    
+    .cta-form__content {
+        max-width: 1820px;
+        margin: 0 auto;
+    }
+    
+    .cta-form__image {
+        max-width: 920px;
+    }
+    
+    .cta-form__form {
+        max-width: 690px;
     }
 }
 
@@ -1422,22 +1554,76 @@ section {
         max-width: 1820px;
     }
     
+    /* Show spacer blocks on large screens for proper layout */
+    .team__card--spacer {
+        display: block;
+        visibility: hidden;
+    }
+    
     .reviews__grid {
         grid-template-columns: repeat(4, 440px);
+        max-width: 1820px;
+        justify-content: center;
+        justify-items: center;
+    }
+    
+    .hero__content {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        text-align: left;
+        gap: 100px;
+        width: 100%;
         max-width: 1820px;
     }
     
     .hero__title {
         font-size: 200px;
         max-width: 800px;
+        width: auto;
+        text-align: left;
+        justify-content: flex-start;
+        align-self: flex-start;
+        white-space: nowrap;
     }
     
-    .hero__content {
-        gap: 100px;
+    .hero__info {
+        width: 576px;
+        max-width: 576px;
+        margin-top: 72px;
+        align-items: flex-start;
+    }
+    
+    .hero__subtitle {
+        width: 576px;
+        max-width: 576px;
+        text-align: left;
+        font-size: 20px;
+        line-height: 130%;
+        padding: 0;
+    }
+    
+    .hero__button {
+        align-self: flex-start;
+    }
+    
+    .cta-form__content {
+        max-width: 1820px;
+        margin: 0 auto;
+    }
+    
+    .cta-form__image {
+        max-width: 920px;
+    }
+    
+    .cta-form__form {
+        max-width: 690px;
     }
 }
 
-@media (min-width: 1441px) and (max-width: 1819px) {
+
+/* Specific fix for screens around 1201px-1279px */
+@media (min-width: 1201px) and (max-width: 1279px) {
     .header {
         width: calc(100% - 100px);
     }
@@ -1467,89 +1653,489 @@ section {
         max-width: 100%;
     }
     
-    .statistics__grid {
-        grid-template-columns: repeat(auto-fit, minmax(380px, 440px));
-        justify-content: center;
-    }
-    
-    .benefits__grid {
-        grid-template-columns: repeat(auto-fit, minmax(380px, 440px));
-        justify-content: center;
+    .team__card--spacer {
+        display: none;
     }
     
     .team__grid {
-        grid-template-columns: repeat(auto-fit, minmax(380px, 440px));
-        justify-content: center;
-    }
-    
-    .reviews__grid {
         grid-template-columns: repeat(auto-fit, minmax(380px, 440px));
         justify-content: center;
     }
 }
 
-@media (max-width: 1440px) {
+/* Specific fix for screens around 1280px-1460px */
+@media (min-width: 1280px) and (max-width: 1460px) {
+    .header {
+        width: calc(100% - 100px);
+    }
+    
     .hero__title {
-        font-size: 180px;
+        font-size: clamp(180px, 12vw, 220px);
+        width: auto;
+        max-width: 900px;
         white-space: nowrap;
     }
     
+    .hero__content {
+        gap: 80px;
+    }
+    
+    .hero__info {
+        max-width: 576px;
+        width: auto;
+    }
+    
+    .hero__subtitle {
+        max-width: 576px;
+        width: auto;
+    }
+    
+    .services__card {
+        max-width: 100%;
+    }
+    
+    .team__card--spacer {
+        display: none;
+    }
+    
+    .team__grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1400px;
+        justify-content: center;
+        justify-items: center;
+    }
+}
+
+/* Specific fix for screens around 1461px-1819px */
+@media (min-width: 1461px) and (max-width: 1819px) {
+    .header {
+        width: calc(100% - 100px);
+    }
+    
+    .hero__title {
+        font-size: clamp(180px, 12vw, 220px);
+        width: auto;
+        max-width: 900px;
+        white-space: nowrap;
+    }
+    
+    .hero__content {
+        gap: 80px;
+    }
+    
+    .hero__info {
+        max-width: 576px;
+        width: auto;
+    }
+    
+    .hero__subtitle {
+        max-width: 576px;
+        width: auto;
+    }
+    
+    .services__card {
+        max-width: 100%;
+    }
+    
+    .team__card--spacer {
+        display: none;
+    }
+    
+    .team__grid {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 440px));
+        justify-content: center;
+    }
+    
+    .reviews__grid {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 440px));
+        justify-content: center;
+        justify-items: center;
+    }
+    
+    /* Center the 4th card under the 2nd card for better aesthetics */
+    .statistics__grid,
+    .benefits__grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1400px;
+        margin: 0 auto;
+        justify-items: stretch;
+    }
+    
+    .statistics__card:nth-child(4),
+    .benefits__card:nth-child(4) {
+        grid-column: 2 / 3;
+        grid-row: 2;
+        max-width: 440px;
+        width: 100%;
+        justify-self: center;
+    }
+    
+    /* Make image smaller on medium screens */
+    .cta-form__image {
+        flex: 0 1 40%;
+        max-width: 600px;
+        height: auto;
+        min-height: 400px;
+        aspect-ratio: 920 / 668;
+    }
+    
+    .cta-form__form-wrapper {
+        flex: 0 1 55%;
+        min-width: 400px;
+    }
+}
+
+
+
+@media (min-width: 1280px) and (max-width: 1440px) {
     .statistics__number {
         font-size: 50px;
     }
     
     .statistics__grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 440px));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         justify-content: center;
     }
     
     .benefits__grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 440px));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         justify-content: center;
     }
     
     .team__grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 440px));
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1400px;
+        justify-content: center;
+        justify-items: center;
+    }
+}
+
+@media (max-width: 1279px) {
+    .statistics__number {
+        font-size: 50px;
+    }
+    
+    .statistics__grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        justify-content: center;
+    }
+    
+    .benefits__grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        justify-content: center;
+    }
+    
+    .team__grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         justify-content: center;
     }
     
     .reviews__grid {
-        grid-template-columns: repeat(2, 440px);
+        grid-template-columns: repeat(2, 1fr);
         justify-content: center;
     }
     
     .reviews__more {
         grid-column: 1 / -1;
     }
+    
+    .services__card {
+        gap: 50px;
+    }
+    
+    .services__card-content {
+        padding: 40px;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+    .header__content {
+        gap: 40px;
+    }
+    
+    .hero__title {
+        font-size: clamp(120px, 15vw, 180px);
+    }
+    
+    .statistics__grid,
+    .benefits__grid,
+    .team__grid,
+    .reviews__grid {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        justify-items: center;
+    }
+    
+    .faq__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Hide spacer blocks */
+    .team__card--spacer {
+        display: none;
+    }
+    
+    .reviews__card--spacer {
+        display: none;
+    }
+    
+    /* Reset 4th card positioning */
+    .statistics__card:nth-child(4),
+    .benefits__card:nth-child(4) {
+        grid-column: auto;
+        grid-row: auto;
+        justify-self: auto;
+    }
+    
+    .cta-form__content {
+        gap: 40px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .cta-form__image {
+        flex: 0 1 45%;
+        max-width: 500px;
+        height: auto;
+        min-height: 350px;
+        aspect-ratio: 920 / 668;
+        align-self: center;
+        margin: 0 auto;
+    }
+    
+    .cta-form__form-wrapper {
+        flex: 0 1 50%;
+        min-width: 400px;
+    }
+    
+    .cta-form__form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1180px) {
+    .services__card {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .services__card-content {
+        flex-direction: column;
+        gap: 30px;
+        padding: 30px;
+        align-items: flex-start;
+        text-align: left;
+        width: 100%;
+        order: 1;
+    }
+    
+    .services__card-number {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .services__card-number img {
+        margin-left: -30px;
+        width: 180px;
+        height: auto;
+    }
+    
+    .services__card:first-child .services__card-number img {
+        margin-left: -40px;
+        width: 180px;
+        height: auto;
+    }
+    
+    .services__card-info {
+        width: 100%;
+        max-width: 100%;
+        align-items: center;
+        padding-right: 0;
+    }
+    
+    .services__card-title {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        font-size: 30px;
+    }
+    
+    .services__card-description {
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        font-size: 18px;
+    }
+    
+    .services__card-image {
+        width: 100%;
+        max-width: 100%;
+        height: 300px;
+        min-height: 250px;
+        margin-right: 0;
+        border-radius: 30px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        order: 2;
+        flex-shrink: 0;
+    }
 }
 
 @media (max-width: 1024px) {
     .header__content {
+        gap: 40px;
+    }
+    
+    .hero__title {
+        font-size: clamp(120px, 15vw, 180px);
+    }
+    
+    .statistics__grid,
+    .benefits__grid,
+    .team__grid,
+    .reviews__grid {
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: center;
+        justify-items: center;
+    }
+    
+    .faq__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Hide spacer blocks on smaller screens */
+    .team__card--spacer {
+        display: none;
+    }
+    
+    .reviews__card--spacer {
+        display: none;
+    }
+    
+    .reviews__grid {
+        justify-content: center;
+        justify-items: center;
+    }
+    
+    /* Reset 4th card positioning for smaller screens */
+    .statistics__card:nth-child(4),
+    .benefits__card:nth-child(4) {
+        grid-column: auto;
+        grid-row: auto;
+        justify-self: auto;
+    }
+    
+    .cta-form__content {
+        gap: 40px;
+    }
+    
+    .cta-form__image {
+        width: 100%;
+        max-width: 100%;
+        height: 400px;
+    }
+    
+    .cta-form__form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header {
+        padding: 12px;
+    }
+    
+    .header__content {
         flex-wrap: wrap;
-        gap: 30px;
+        gap: 20px;
+        position: relative;
+    }
+    
+    .header__menu-toggle {
+        display: flex;
+        order: 2;
+        margin-left: auto;
+        gap: 3px;
+    }
+    
+    .header__menu-toggle span {
+        height: 1px;
+        border-radius: 0;
+    }
+    
+    .header__nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(90, 142, 255, 0.95);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 20px;
+        border-radius: 20px;
+        margin-top: 10px;
+        gap: 15px;
+        width: 100%;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .header__nav--active {
+        display: flex;
+    }
+    
+    .header__contact {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .header__phone {
+        font-size: 16px;
+    }
+    
+    .header__button {
+        font-size: 16px;
+        padding: 10px 18px;
+    }
+    
+    .hero {
+        padding: 30px 20px;
+        min-height: 800px;
     }
     
     .hero__content {
         flex-direction: column;
         text-align: center;
         gap: 30px;
+        align-items: center;
     }
     
     .hero__title {
-        font-size: 80px;
+        font-size: clamp(60px, 12vw, 120px);
         width: 100%;
         max-width: 100%;
+        white-space: normal;
+        text-align: center;
     }
     
     .hero__info {
         width: 100%;
         max-width: 100%;
         margin-top: 0;
+        align-items: center;
     }
     
     .hero__subtitle {
         width: 100%;
         max-width: 100%;
+        text-align: center;
+    }
+    
+    .hero__button {
+        align-self: center;
     }
     
     .services__card {
@@ -1561,33 +2147,82 @@ section {
         flex-direction: column;
         gap: 30px;
         padding: 30px;
+        align-items: flex-start;
+        text-align: left;
     }
     
     .services__card-number {
-        font-size: 100px;
-        min-width: auto;
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    .services__card-number img {
+        margin-left: -30px;
+        width: 180px;
+        height: auto;
+    }
+    
+    .services__card:first-child .services__card-number img {
+        margin-left: -40px;
+        width: 180px;
+        height: auto;
+    }
+    
+    .services__card-info {
+        width: 100%;
+        align-items: center;
+    }
+    
+    .services__card-title,
+    .services__card-description {
+        width: 100%;
         text-align: center;
     }
     
     .services__card-image {
         width: 100%;
-        height: 200px;
+        max-width: 100%;
+        height: 300px;
+        min-height: 250px;
+        margin-right: 0;
+        border-radius: 30px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        order: 2;
+    }
+    
+    .services__card-content {
+        order: 1;
+    }
+    
+    .services__card-title {
+        font-size: 30px;
+    }
+    
+    .services__card-description {
+        font-size: 18px;
     }
     
     .statistics__grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     
     .benefits__grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     
     .team__grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     
     .reviews__grid {
         grid-template-columns: 1fr;
+        gap: 15px;
+        justify-content: center;
+        justify-items: center;
     }
     
     .faq__grid {
@@ -1611,135 +2246,138 @@ section {
         width: 100%;
         max-width: 100%;
         flex-wrap: wrap;
+        gap: 20px;
+    }
+    
+    .cta-form__container {
+        padding: 0 30px;
     }
     
     .cta-form__content {
         flex-direction: column;
+        gap: 30px;
+        align-items: center;
+        justify-content: center;
     }
     
     .cta-form__image {
         width: 100%;
-        height: 300px;
+        max-width: 100%;
+        height: 350px;
+        order: 1;
+        align-self: center;
+        margin: 0 auto;
+    }
+    
+    .cta-form__form-wrapper {
+        width: 100%;
+        max-width: 100%;
+        order: 2;
     }
     
     .cta-form__form {
         width: 100%;
-        max-width: 690px;
+        max-width: 100%;
     }
     
-    .cta-form__label,
+    .cta-form__label {
+        width: 100%;
+        max-width: 100%;
+        font-size: clamp(18px, 3vw, 24px);
+    }
+    
     .cta-form__input,
     .cta-form__textarea {
         width: 100%;
-        max-width: 690px;
+        max-width: 100%;
+    }
+    
+    .cta-form__button {
+        width: 100%;
+        max-width: 100%;
     }
 }
 
 @media (max-width: 768px) {
-    * {
-        box-sizing: border-box;
-    }
-    
-    html {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-    
-    body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-        position: relative;
-    }
-    
-    section {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-    
-    div, p, h1, h2, h3, h4, h5, h6, a, span, img {
-        max-width: 100%;
-    }
-    
-    img {
-        height: auto;
-    }
-    
     .header {
         width: calc(100% - 40px);
         padding: 10px;
-        max-width: 100%;
+        margin: 0 20px;
+    }
+    
+    .header__logo {
+        font-size: 18px;
     }
     
     .header__content {
-        flex-direction: column;
-        gap: 15px;
-        align-items: center;
-        width: 100%;
+        position: relative;
     }
     
     .header__nav {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 15px;
-        width: 100%;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(90, 142, 255, 0.98);
+        backdrop-filter: blur(20px);
+        z-index: 100;
+        margin: 10px 0 0 0;
+        padding: 20px;
+        border-radius: 20px;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    }
+    
+    .header__nav--active {
+        display: flex;
     }
     
     .header__nav-link {
-        white-space: nowrap;
+        font-size: 20px;
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        width: 100%;
     }
     
     .header__contact {
+        width: 100%;
         flex-direction: column;
         gap: 15px;
-        align-items: center;
+        margin-top: 20px;
+    }
+    
+    .header__phone {
+        font-size: 18px;
+    }
+    
+    .header__button {
         width: 100%;
+        text-align: center;
+        padding: 12px 20px;
     }
     
     .hero {
         padding: 20px;
-        min-height: auto;
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .hero__background {
-        overflow: hidden;
-    }
-    
-    .hero__container {
-        width: 100%;
-        max-width: 100%;
-        overflow: hidden;
-    }
-    
-    .hero__content {
-        width: 100%;
-        max-width: 100%;
-        flex-wrap: wrap;
+        min-height: 600px;
     }
     
     .hero__title {
-        font-size: 60px;
-        min-height: auto;
-        width: 100%;
-        max-width: 100%;
-        white-space: normal;
-        word-break: break-word;
-    }
-    
-    .hero__info {
-        width: 100%;
-        max-width: 100%;
-        margin-top: 0;
+        font-size: clamp(48px, 15vw, 80px);
+        line-height: 1.1;
     }
     
     .hero__subtitle {
         font-size: 16px;
+    }
+    
+    .hero__button {
         width: 100%;
-        max-width: 100%;
+        max-width: 280px;
+        height: 56px;
     }
     
     .statistics__container,
@@ -1750,18 +2388,6 @@ section {
     .faq__container,
     .cta-form__container {
         padding: 0 20px;
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .statistics__grid,
-    .services__grid,
-    .team__grid,
-    .benefits__grid,
-    .reviews__grid,
-    .faq__grid {
-        width: 100%;
-        max-width: 100%;
     }
     
     .statistics__title,
@@ -1772,8 +2398,6 @@ section {
     .faq__title,
     .cta-form__title {
         font-size: 32px;
-        width: 100%;
-        max-width: 100%;
     }
     
     .statistics__subtitle,
@@ -1784,299 +2408,180 @@ section {
     .faq__subtitle,
     .cta-form__subtitle {
         font-size: 16px;
-        width: 100%;
-        max-width: 100%;
     }
     
-    .statistics__grid {
-        width: 100%;
-        max-width: 100%;
+    .statistics__grid,
+    .benefits__grid,
+    .team__grid {
         grid-template-columns: 1fr;
         gap: 15px;
     }
     
-    .statistics__header {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .statistics__card {
-        width: 100%;
-        max-width: 100%;
-        padding: 30px 20px;
-    }
-    
+    .statistics__card,
     .benefits__card {
-        width: 100%;
-        max-width: 100%;
         padding: 25px 20px;
-    }
-    
-    .team__card {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .reviews__card {
-        width: 100%;
-        max-width: 100%;
-        padding: 25px 20px;
-    }
-    
-    .services__grid {
-        width: 100%;
-        max-width: 100%;
-        gap: 15px;
-    }
-    
-    .services__header {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .services__card {
-        width: 100%;
-        max-width: 100%;
-        gap: 20px;
     }
     
     .services__card-content {
-        width: 100%;
-        max-width: 100%;
         padding: 20px;
     }
     
-    .services__card-number {
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-    }
-    
     .services__card-number img {
-        width: 150px;
-        height: auto;
-        margin-left: 0;
-        max-width: 100%;
+        width: 120px;
     }
     
     .services__card:first-child .services__card-number img {
-        width: 150px;
-        height: auto;
-        margin-left: 0;
-        max-width: 100%;
-    }
-    
-    .services__card-info {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .services__card-title,
-    .services__card-description {
-        width: 100%;
-        max-width: 100%;
+        width: 120px;
     }
     
     .services__card-image {
         width: 100%;
         max-width: 100%;
-        margin-right: 0;
-    }
-    
-    .team__grid {
-        width: 100%;
-        max-width: 100%;
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .team__header {
-        width: 100%;
-        max-width: 100%;
+        height: 250px;
+        min-height: 200px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
     
     .reviews__grid {
-        width: 100%;
-        max-width: 100%;
         grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .reviews__header {
-        width: 100%;
-        max-width: 100%;
+        justify-content: center;
+        justify-items: center;
     }
     
     .reviews__more {
         grid-column: 1;
     }
     
-    .team__card-image {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .benefits__grid {
-        width: 100%;
-        max-width: 100%;
-        grid-template-columns: 1fr;
-        gap: 15px;
-    }
-    
-    .benefits__header {
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .benefits__card-title,
-    .benefits__card-text {
-        width: 100%;
-        max-width: 100%;
+    .cta-form__container {
+        padding: 0 20px;
     }
     
     .cta-form__content {
-        width: 100%;
-        max-width: 100%;
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+        justify-content: center;
     }
     
     .cta-form__image {
         width: 100%;
         max-width: 100%;
-        height: 250px;
+        height: 280px;
+        order: 1;
+        align-self: center;
+        margin: 0 auto;
     }
     
     .cta-form__form-wrapper {
         width: 100%;
         max-width: 100%;
+        order: 2;
+    }
+    
+    .cta-form__form {
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .cta-form__label {
+        width: 100%;
+        max-width: 100%;
+        font-size: 20px;
+    }
+    
+    .cta-form__input {
+        width: 100%;
+        max-width: 100%;
+        min-height: 60px;
+        padding: 20px 18px;
+        font-size: 15px;
+    }
+    
+    .cta-form__textarea {
+        width: 100%;
+        max-width: 100%;
+        min-height: 100px;
+        padding: 20px 18px;
+        font-size: 15px;
+    }
+    
+    .cta-form__button {
+        width: 100%;
+        max-width: 100%;
+        height: 60px;
+        font-size: 20px;
+    }
+    
+    .cta-form__note {
+        font-size: 14px;
     }
     
     .footer {
-        width: 100%;
-        max-width: 100%;
         padding: 30px 20px;
-    }
-    
-    .footer__container {
-        width: 100%;
-        max-width: 100%;
     }
     
     .footer__content {
         flex-direction: column;
         gap: 30px;
-        width: 100%;
     }
     
     .footer__nav {
         flex-wrap: wrap;
         justify-content: center;
-        width: 100%;
     }
     
     .footer__info {
         flex-direction: column;
         gap: 20px;
-        width: 100%;
-    }
-    
-    .footer__logo {
-        width: 100%;
-        word-break: break-word;
     }
 }
 
 @media (max-width: 480px) {
-    * {
-        box-sizing: border-box;
-    }
-    
-    html {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-    
-    body {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-        position: relative;
-    }
-    
-    section {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-    }
-    
-    div, p, h1, h2, h3, h4, h5, h6, a, span, img {
-        max-width: 100%;
-    }
-    
-    img {
-        height: auto;
-    }
-    
     .header {
         width: calc(100% - 20px);
         padding: 8px;
+        margin: 0 10px;
         border-radius: 20px;
-        max-width: 100%;
     }
     
     .header__logo {
+        font-size: 16px;
+    }
+    
+    .header__nav-link {
         font-size: 18px;
     }
     
-    .header__nav-link,
-    .header__phone,
-    .header__button {
-        font-size: 14px;
+    .header__phone {
+        font-size: 16px;
     }
     
     .header__button {
-        padding: 8px 16px;
+        font-size: 14px;
+        padding: 10px 16px;
     }
     
     .hero {
         padding: 15px;
-        width: 100%;
-        max-width: 100%;
-    }
-    
-    .hero__background {
-        overflow: hidden;
-    }
-    
-    .hero__container {
-        width: 100%;
-        max-width: 100%;
-        overflow: hidden;
-    }
-    
-    .hero__content {
-        width: 100%;
-        max-width: 100%;
+        min-height: 500px;
     }
     
     .hero__title {
-        font-size: 48px;
-        width: 100%;
-        max-width: 100%;
-        white-space: normal;
+        font-size: clamp(40px, 12vw, 60px);
     }
     
     .hero__subtitle {
         font-size: 14px;
-        width: 100%;
-        max-width: 100%;
     }
     
     .hero__button {
         width: 100%;
-        max-width: 200px;
-        height: 56px;
+        max-width: 100%;
+        height: 50px;
         font-size: 16px;
+        padding: 10px 20px;
     }
     
     .statistics__container,
@@ -2088,8 +2593,6 @@ section {
     .cta-form__container {
         padding: 0 15px;
         gap: 40px;
-        width: 100%;
-        max-width: 100%;
     }
     
     .statistics__title,
@@ -2100,8 +2603,16 @@ section {
     .faq__title,
     .cta-form__title {
         font-size: 28px;
-        width: 100%;
-        max-width: 100%;
+    }
+    
+    .statistics__subtitle,
+    .services__subtitle,
+    .team__subtitle,
+    .benefits__subtitle,
+    .reviews__subtitle,
+    .faq__subtitle,
+    .cta-form__subtitle {
+        font-size: 14px;
     }
     
     .statistics__number {
@@ -2112,77 +2623,166 @@ section {
         font-size: 20px;
     }
     
+    .statistics__card,
+    .benefits__card {
+        padding: 20px 15px;
+    }
+    
     .services__card-title {
-        font-size: 24px;
-        width: 100%;
-        max-width: 100%;
+        font-size: 22px;
     }
     
     .services__card-description {
-        font-size: 16px;
+        font-size: 15px;
+    }
+    
+    .services__card-number img {
+        width: 100px;
+    }
+    
+    .services__card:first-child .services__card-number img {
+        width: 100px;
+    }
+    
+    .services__card-image {
         width: 100%;
         max-width: 100%;
+        height: 220px;
+        min-height: 180px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
     }
     
     .team__card-name {
-        font-size: 24px;
+        font-size: 22px;
     }
     
     .team__card-role {
-        font-size: 16px;
+        font-size: 15px;
     }
     
     .benefits__card-title {
-        font-size: 24px;
-        width: 100%;
-        max-width: 100%;
+        font-size: 22px;
     }
     
     .benefits__card-text {
-        font-size: 16px;
-        width: 100%;
-        max-width: 100%;
+        font-size: 15px;
+    }
+    
+    .reviews__card {
+        padding: 20px 15px;
     }
     
     .reviews__card-name {
-        font-size: 20px;
+        font-size: 18px;
     }
     
     .reviews__card-text {
-        font-size: 16px;
+        font-size: 15px;
     }
     
     .faq__item-question {
-        font-size: 20px;
+        font-size: 18px;
     }
     
     .faq__item-answer {
-        font-size: 16px;
+        font-size: 15px;
     }
     
     .cta-form__label {
-        font-size: 20px;
-        width: 100%;
-        max-width: 100%;
+        font-size: 18px;
     }
     
     .cta-form__input,
     .cta-form__textarea {
         font-size: 14px;
-        padding: 20px 15px;
+        padding: 18px 15px;
+    }
+    
+    .cta-form__button {
         width: 100%;
         max-width: 100%;
+        height: 56px;
+    }
+    
+    .cta-form__container {
+        padding: 0 15px;
+    }
+    
+    .cta-form__content {
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .cta-form__image {
+        width: 100%;
+        max-width: 100%;
+        height: 220px;
+        order: 1;
+        align-self: center;
+        margin: 0 auto;
+    }
+    
+    .cta-form__form-wrapper {
+        width: 100%;
+        max-width: 100%;
+        order: 2;
+    }
+    
+    .cta-form__form {
+        width: 100%;
+        max-width: 100%;
+        gap: 15px;
+    }
+    
+    .cta-form__label {
+        width: 100%;
+        max-width: 100%;
+        font-size: 18px;
+        min-height: auto;
+    }
+    
+    .cta-form__input {
+        width: 100%;
+        max-width: 100%;
+        min-height: 56px;
+        padding: 18px 15px;
+        font-size: 14px;
+    }
+    
+    .cta-form__textarea {
+        width: 100%;
+        max-width: 100%;
+        min-height: 90px;
+        padding: 18px 15px;
+        font-size: 14px;
+    }
+    
+    .cta-form__button {
+        width: 100%;
+        max-width: 100%;
+        height: 56px;
+        font-size: 18px;
+        padding: 12px 20px;
+    }
+    
+    .cta-form__button-text {
+        font-size: 16px;
+    }
+    
+    .cta-form__note {
+        font-size: 13px;
     }
     
     .footer {
         padding: 30px 15px;
-        width: 100%;
-        max-width: 100%;
     }
     
     .footer__logo {
-        width: 100%;
-        word-break: break-word;
+        font-size: clamp(60px, 15vw, 120px);
     }
     
     .footer__nav-link,
@@ -2193,6 +2793,13 @@ section {
     
     .footer__info-text {
         white-space: normal;
+    }
+    
+    .footer__copyright {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        font-size: 14px;
     }
 }
 
@@ -2223,18 +2830,18 @@ section {
 .cta-form__title {
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
-    font-size: 50px;
+    font-size: clamp(28px, 5vw, 50px);
     line-height: 1.3em;
     letter-spacing: -0.01em;
     color: var(--color-black);
     margin: 0;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 .cta-form__subtitle {
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
-    font-size: 20px;
+    font-size: clamp(16px, 2.5vw, 20px);
     line-height: 1.3em;
     color: var(--color-black);
 }
@@ -2242,21 +2849,28 @@ section {
 .cta-form__content {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 50px;
     width: 100%;
     position: relative;
+    flex-wrap: wrap;
 }
 
 .cta-form__image {
-    width: 920px;
+    width: 100%;
+    max-width: 920px;
     height: 668px;
+    min-height: 400px;
     border-radius: 40px;
     opacity: 1;
     background-image: url('images/form-background.png');
     background-size: cover;
     background-position: center;
     object-fit: cover;
-    flex-shrink: 0;
+    flex-shrink: 1;
+    flex: 0 1 45%;
+    align-self: center;
+    margin: 0 auto;
 }
 
 .cta-form__form-wrapper {
@@ -2264,13 +2878,16 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
 }
 
 .cta-form__form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 690px;
+    width: 100%;
+    max-width: 690px;
 }
 
 .cta-form__field {
@@ -2284,7 +2901,8 @@ section {
 }
 
 .cta-form__label {
-    width: 690px;
+    width: 100%;
+    max-width: 690px;
     min-height: 36px;
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
@@ -2296,7 +2914,8 @@ section {
 }
 
 .cta-form__input {
-    width: 690px;
+    width: 100%;
+    max-width: 690px;
     min-height: 72px;
     padding: 25px 20px;
     background-color: var(--color-blue7);
@@ -2314,7 +2933,8 @@ section {
 }
 
 .cta-form__textarea {
-    width: 690px;
+    width: 100%;
+    max-width: 690px;
     min-height: 120px;
     padding: 25px 20px;
     background-color: var(--color-blue7);
@@ -2409,38 +3029,55 @@ section {
     opacity: 1;
 }
 
-@media (max-width: 768px) {
-    .header__nav {
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-    
-    .header__contact {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
+@media (max-width: 900px) {
     .hero__title {
-        font-size: 60px;
+        font-size: clamp(70px, 10vw, 100px);
     }
     
-    .statistics__title,
-    .services__title,
-    .team__title,
-    .benefits__title,
-    .reviews__title,
-    .faq__title,
-    .cta-form__title {
-        font-size: 36px;
+    .statistics__grid,
+    .benefits__grid,
+    .team__grid {
+        grid-template-columns: repeat(2, 1fr);
     }
     
-    .cta-form__content {
-        flex-direction: column;
+    /* Hide spacer blocks */
+    .team__card--spacer {
+        display: none;
     }
     
-    .cta-form__image {
-        width: 100%;
-        height: 300px;
+    .reviews__card--spacer {
+        display: none;
+    }
+    
+    .services__card {
+        gap: 30px;
+    }
+    
+    .services__card-content {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .statistics__grid,
+    .benefits__grid,
+    .team__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .reviews__grid {
+        grid-template-columns: 1fr;
+        justify-content: center;
+        justify-items: center;
+    }
+    
+    /* Hide spacer blocks on mobile */
+    .team__card--spacer {
+        display: none;
+    }
+    
+    .reviews__card--spacer {
+        display: none;
     }
 }
 

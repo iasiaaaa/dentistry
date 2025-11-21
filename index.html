@@ -8,6 +8,31 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Inter:wght@700&display=swap" rel="stylesheet">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.header__menu-toggle');
+            const nav = document.querySelector('.header__nav');
+            const header = document.querySelector('.header');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('header__nav--active');
+                    menuToggle.classList.toggle('header__menu-toggle--active');
+                    header.classList.toggle('header--menu-open');
+                });
+                
+                // Close menu when clicking on a link
+                const navLinks = document.querySelectorAll('.header__nav-link');
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        nav.classList.remove('header__nav--active');
+                        menuToggle.classList.remove('header__menu-toggle--active');
+                        header.classList.remove('header--menu-open');
+                    });
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <!-- Hero Section -->
@@ -17,6 +42,11 @@
             <div class="header__container">
                 <div class="header__content">
                     <div class="header__logo">WhiteLine</div>
+                    <button class="header__menu-toggle" aria-label="Toggle menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                     <nav class="header__nav">
                         <a href="#hero" class="header__nav-link">Головна</a>
                         <a href="#services" class="header__nav-link">Послуги та ціни</a>
@@ -519,7 +549,7 @@
                 <div class="footer__copyright">
                     <span>Ⓒ 2025 WhiteLine</span>
                     <a href="#" class="footer__link">Політика конфіденційності</a>
-                    <span>Розробка сайту: @iasiaaaaa</span>
+                    <span>Розробка дизайну сайту: @iasiaaaaa</span>
                 </div>
             </div>
         </div>
