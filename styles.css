@@ -32,8 +32,9 @@ body {
 
 /* Header */
 .header {
-    width: 1820px;
-    height: 79px;
+    max-width: 1820px;
+    width: 100%;
+    min-height: 79px;
     background: rgba(90, 142, 255, 0.07);
     border: 3px solid var(--white1, #FFFFFF03);
     border-radius: 40px;
@@ -183,22 +184,25 @@ body {
 }
 
 .hero__content {
-    width: 1820px;
-    height: 312px;
+    max-width: 1820px;
+    width: 100%;
+    min-height: 312px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
     opacity: 1;
+    gap: 40px;
 }
 
 .hero__title {
-    width: 1086px;
-    height: 312px;
+    width: auto;
+    max-width: 1086px;
+    min-height: 312px;
     font-family: 'Manrope', sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 300px;
+    font-size: 250px;
     line-height: 1;
     letter-spacing: -5%;
     color: #FFFFFF;
@@ -207,6 +211,8 @@ body {
     opacity: 1;
     display: flex;
     align-items: center;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .hero__info {
@@ -215,13 +221,14 @@ body {
     justify-content: space-between;
     gap: 15px;
     width: 576px;
-    height: 180px;
+    min-height: 180px;
     margin-top: 72px;
+    flex-shrink: 0;
 }
 
 .hero__subtitle {
     width: 576px;
-    height: 78px;
+    min-height: 78px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -324,15 +331,18 @@ body {
 }
 
 .statistics__grid {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 440px);
     gap: 20px;
     width: 100%;
+    max-width: 1820px;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .statistics__card {
     width: 440px;
-    height: 251px;
+    min-height: 251px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -346,6 +356,7 @@ body {
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .statistics__card::before {
@@ -478,8 +489,9 @@ body {
 }
 
 .services__card {
-    width: 1831px;
-    height: 312px;
+    width: 100%;
+    max-width: 1831px;
+    min-height: 312px;
     display: flex;
     align-items: center;
     gap: 110px;
@@ -490,7 +502,6 @@ body {
     overflow: hidden;
     position: relative;
     opacity: 1;
-    left: -52px;
 }
 
 .services__card-content {
@@ -508,6 +519,7 @@ body {
     align-items: center;
     justify-content: center;
     opacity: 1;
+    flex-shrink: 0;
 }
 
 .services__card-number img {
@@ -530,7 +542,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 23px;
-    max-width: 751px;
+    width: 751px;
+    flex-shrink: 0;
 }
 
 .services__card-text {
@@ -541,7 +554,7 @@ body {
 
 .services__card-title {
     width: 751px;
-    height: 45px;
+    min-height: 45px;
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
     font-style: normal;
@@ -557,7 +570,7 @@ body {
 
 .services__card-description {
     width: 751px;
-    height: 25px;
+    min-height: 25px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-style: normal;
@@ -691,7 +704,7 @@ body {
 
 .team__card {
     width: 440px;
-    height: 571px;
+    min-height: 571px;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -846,7 +859,7 @@ body {
 .benefits__container {
     max-width: 1820px;
     margin: 0 auto;
-    padding: 0;
+    padding: 0 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -881,17 +894,20 @@ body {
 }
 
 .benefits__grid {
-    width: 1820px;
-    height: 240px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 440px);
     gap: 20px;
+    width: 100%;
+    max-width: 1820px;
+    min-height: 240px;
     opacity: 1;
     margin: 0 auto;
+    justify-content: center;
 }
 
 .benefits__card {
     width: 440px;
-    height: 240px;
+    min-height: 240px;
     display: flex;
     flex-direction: column;
     gap: 0;
@@ -904,6 +920,7 @@ body {
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .benefits__card::before {
@@ -930,7 +947,7 @@ body {
 
 .benefits__card-title {
     width: 321px;
-    height: 45px;
+    min-height: 45px;
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
     font-style: normal;
@@ -990,20 +1007,17 @@ body {
 
 .benefits__card-text {
     width: 352px;
-    height: 75px;
+    min-height: 75px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-style: normal;
     font-size: 18px;
-    line-height: 140%;
+    line-height: 1.4em;
     letter-spacing: 0%;
     color: var(--color-black);
     opacity: 1;
     position: relative;
     z-index: 1;
-    font-size: 18px;
-    line-height: 1.4em;
-    color: var(--color-black);
 }
 
 .benefits__button {
@@ -1080,7 +1094,6 @@ body {
 
 .reviews__card {
     width: 440px;
-    height: 305px;
     min-height: 305px;
     display: flex;
     flex-direction: column;
@@ -1182,7 +1195,7 @@ body {
 
 .reviews__more-text {
     width: 285px;
-    height: 36px;
+    min-height: 36px;
     font-family: 'Manrope', sans-serif;
     font-weight: 400;
     font-size: 24px;
@@ -1342,37 +1355,101 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 1920px) {
-    .hero__title {
-        font-size: 180px;
+@media (min-width: 1921px) {
+    .hero__container,
+    .statistics__container,
+    .services__container,
+    .team__container,
+    .benefits__container,
+    .reviews__container,
+    .faq__container,
+    .cta-form__container,
+    .footer__container {
+        max-width: 1820px;
     }
     
-    .services__card-number {
-        font-size: 180px;
-        min-width: 250px;
+    .header {
+        max-width: 1820px;
+    }
+    
+    .statistics__grid {
+        grid-template-columns: repeat(4, 440px);
+        max-width: 1820px;
+    }
+    
+    .benefits__grid {
+        grid-template-columns: repeat(4, 440px);
+        max-width: 1820px;
+    }
+}
+
+@media (min-width: 1441px) and (max-width: 1920px) {
+    .header {
+        width: calc(100% - 100px);
+    }
+    
+    .hero__title {
+        font-size: clamp(180px, 12vw, 250px);
+        width: auto;
+        max-width: 1086px;
+        white-space: nowrap;
+    }
+    
+    .hero__info {
+        max-width: 576px;
+        width: auto;
+    }
+    
+    .hero__subtitle {
+        max-width: 576px;
+        width: auto;
+    }
+    
+    .services__card {
+        max-width: 100%;
+    }
+    
+    .statistics__grid {
+        grid-template-columns: repeat(4, 440px);
+    }
+    
+    .benefits__grid {
+        grid-template-columns: repeat(4, 440px);
     }
 }
 
 @media (max-width: 1440px) {
     .hero__title {
-        font-size: 120px;
-    }
-    
-    .services__card-number {
-        font-size: 120px;
-        min-width: 200px;
+        font-size: 180px;
+        white-space: nowrap;
     }
     
     .statistics__number {
         font-size: 50px;
     }
     
+    .statistics__grid {
+        grid-template-columns: repeat(2, 440px);
+        justify-content: center;
+    }
+    
+    .benefits__grid {
+        grid-template-columns: repeat(2, 440px);
+        justify-content: center;
+    }
+    
     .team__grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 440px);
+        justify-content: center;
     }
     
     .reviews__grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 440px);
+        justify-content: center;
+    }
+    
+    .reviews__more {
+        grid-column: 2;
     }
 }
 
@@ -1385,10 +1462,24 @@ body {
     .hero__content {
         flex-direction: column;
         text-align: center;
+        gap: 30px;
     }
     
     .hero__title {
         font-size: 80px;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .hero__info {
+        width: 100%;
+        max-width: 100%;
+        margin-top: 0;
+    }
+    
+    .hero__subtitle {
+        width: 100%;
+        max-width: 100%;
     }
     
     .services__card {
@@ -1414,14 +1505,14 @@ body {
     }
     
     .statistics__grid {
-        flex-wrap: wrap;
-    }
-    
-    .team__grid {
         grid-template-columns: 1fr;
     }
     
     .benefits__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .team__grid {
         grid-template-columns: 1fr;
     }
     
@@ -1494,6 +1585,7 @@ body {
     background-size: cover;
     background-position: center;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .cta-form__form-wrapper {
@@ -1522,7 +1614,7 @@ body {
 
 .cta-form__label {
     width: 690px;
-    height: 36px;
+    min-height: 36px;
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
     font-size: 24px;
@@ -1534,7 +1626,7 @@ body {
 
 .cta-form__input {
     width: 690px;
-    height: 72px;
+    min-height: 72px;
     padding: 25px 20px;
     background-color: var(--color-blue7);
     border: 3px solid rgba(255, 255, 255, 0.01);
@@ -1552,7 +1644,7 @@ body {
 
 .cta-form__textarea {
     width: 690px;
-    height: 120px;
+    min-height: 120px;
     padding: 25px 20px;
     background-color: var(--color-blue7);
     border: 3px solid rgba(255, 255, 255, 0.01);
